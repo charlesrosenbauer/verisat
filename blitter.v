@@ -5,23 +5,20 @@
 	* write to pixel buffer
 	* read from sprite buffer
 	* read from icon buffer
+	
+	Thoughts:
+	* double icon buffer
+	* sprite buffer (multiple compression modes)
+	* object buffer, limited objects, higher (x,y) resolution
+	* image generator, configurable h/w, framerate
+	* a couple drawing modes?
 */
-module toplevel(clock,reset);
-  input clock;
-  input reset;
+module myModule();
 
-  reg flop1;
-  reg flop2;
+initial
+  begin
+    $display("Hello World!");   // This will display a message
+    $finish ; // This causes the simulation to end.  Without, it would go on..and on.
+  end
 
-  always @ (posedge reset or posedge clock)
-    if (reset)
-      begin
-        flop1 <= 0;
-        flop2 <= 1;
-      end
-    else
-      begin
-        flop1 <= flop2;
-        flop2 <= flop1;
-      end
 endmodule
