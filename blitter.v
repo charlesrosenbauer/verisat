@@ -13,7 +13,31 @@
 	* image generator, configurable h/w, framerate
 	* a couple drawing modes?
 */
+
+
+
 module myModule();
+
+/*
+	framecounter = 0
+	x = 0
+	y = 0
+	always @ clk {
+		if(x+1 < W)
+			x++
+		else if(y+1 < H)
+			x = 0, y++
+		else
+			wait
+			
+		if(!wait){
+			draw pixel
+		}
+		if(framecounter == limit)
+			x = 0, y = 0, framecounter = 0
+	}
+*/
+
 
 initial
   begin
