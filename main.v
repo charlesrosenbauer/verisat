@@ -19,8 +19,8 @@ module solver(
 	output reg			unsat,
 	output reg	[7:0]	exbus
 );
-	reg			[127:0]	here_state;
-	reg			[127:0] prev_state;
+	reg			[128:0]	here_state;
+	reg			[128:0] prev_state;
 	
 	
 	parameter	OP_RST_MODEL	= 0,
@@ -50,6 +50,17 @@ module solver(
 			
 			OP_WALK : begin
 				// this is complicated, and is the bulk of what needs to get done
+				
+				// I'm thinking it might be a good idea to, for this solver, just use big bit tables for clauses
+				// That essentially makes this full SAT, albeit with a maximum of 128 variables
+				// And probably a max of 256 or so clauses.
+				
+				// For each clause, calculate the step size
+				//		this requires tracking if any of the constraints are satisfied
+				//		and if none are, then return a step based on incrementing to flip the smallest constraint
+				// Then, increment by the maximum step
+				// If there is no difference from the previous step, set SAT high
+				// If a bit one above the largest variable is set, set UNSAT high
 			end
 		endcase
 	end
