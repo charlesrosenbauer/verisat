@@ -32,28 +32,24 @@ module solver(
 	always @(posedge clk) begin
 		case (cmd)
 			OP_RST_MODEL : begin
-			
-			
+				// reset clauses
 			end
 			
 			OP_RST_STATE : begin
-			
-			
+				assign here_state =  0;
+				assign prev_state = -1;
 			end
 	
 			OP_INS_CLAUSE : begin
-			
-			
+				// insert clause, pulling from bus_a, bus_b, and bus_c
 			end
 			
 			OP_GET_STATE : begin
-			
-			
+				// index byte from here_state[bus_a], write to exbus
 			end
 			
 			OP_WALK : begin
-			
-			
+				// this is complicated, and is the bulk of what needs to get done
 			end
 		endcase
 	end
